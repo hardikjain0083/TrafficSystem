@@ -17,4 +17,12 @@ class Road {
     int getVehicleCount() {
         return vehicles.size();
     }
+    int calculateDensity() {
+    int density = 0;
+    for (Vehicle v : vehicles) {
+        density += v.weight;
+    }
+    return density;
 }
+}
+
