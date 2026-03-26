@@ -1,6 +1,6 @@
 // NormalStrategy.java
 class NormalStrategy implements ControlStrategy {
-    public int calculateGreenTime(Road road) {
-        return 10 + road.calculateDensity() * 2;
+    public int computeGreenTime(double density) {
+        return (int)(10 + density * 2);
     }
 }

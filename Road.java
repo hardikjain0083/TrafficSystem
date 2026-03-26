@@ -2,27 +2,27 @@
 import java.util.*;
 
 class Road {
-    String name;
-    List<Vehicle> vehicles;
+    private String name;
+    private List<Vehicle> vehicles;
 
     Road(String name) {
         this.name = name;
         this.vehicles = new ArrayList<>();
     }
 
-    void addVehicle(Vehicle v) {
+    public void addVehicle(Vehicle v) {
         vehicles.add(v);
     }
 
-    int getVehicleCount() {
-        return vehicles.size();
+    public double calculateDensity() {
+        double density = 0;
+        for (Vehicle v : vehicles) {
+            density += v.getEffectiveWeight();
+        }
+        return density;
     }
-    int calculateDensity() {
-    int density = 0;
-    for (Vehicle v : vehicles) {
-        density += v.weight;
-    }
-    return density;
-}
-}
 
+    public String getName() {
+        return name;
+    }
+}

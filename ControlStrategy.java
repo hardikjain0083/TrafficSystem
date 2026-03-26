@@ -1,4 +1,4 @@
 // ControlStrategy.java
 interface ControlStrategy {
-    int calculateGreenTime(Road road);
+    int computeGreenTime(double density);
 }

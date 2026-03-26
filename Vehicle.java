@@ -1,28 +1,22 @@
 // Vehicle.java
-class Vehicle {
-    String type;
-    int weight;
+abstract class Vehicle {
+    protected String vehicleId;
+    protected double weightage;
+    protected double length;
+    protected double speedFactor;
 
-    Vehicle(String type, int weight) {
-        this.type = type;
-        this.weight = weight;
+    Vehicle(String vehicleId, double weightage, double length, double speedFactor) {
+        this.vehicleId = vehicleId;
+        this.weightage = weightage;
+        this.length = length;
+        this.speedFactor = speedFactor;
     }
-}
 
-class Car extends Vehicle {
-    Car() {
-        super("Car", 1);
-    }
-}
+    // Abstract method
+    abstract double getEffectiveWeight();
 
-class Bike extends Vehicle {
-    Bike() {
-        super("Bike", 1);
-    }
-}
-
-class Truck extends Vehicle {
-    Truck() {
-        super("Truck", 3);
+    // Clearing time logic
+    public double getClearingTime() {
+        return length / speedFactor;
     }
 }

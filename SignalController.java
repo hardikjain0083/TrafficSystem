@@ -1,15 +1,24 @@
 // SignalController.java
 class SignalController {
+
     private ControlStrategy strategy;
 
     SignalController(ControlStrategy strategy) {
         this.strategy = strategy;
     }
 
-    void manageTraffic(Road[] roads) {
+    public void setStrategy(ControlStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void manageTraffic(Road[] roads) {
         for (Road road : roads) {
-            int time = strategy.calculateGreenTime(road);
-            System.out.println("Road " + road.name + " GREEN for " + time + " seconds");
+            double density = road.calculateDensity();
+            int time = strategy.computeGreenTime(density);
+
+            System.out.println("Road " + road.getName() +
+                    " Density: " + density +
+                    " → GREEN for " + time + " seconds");
         }
     }
 }
