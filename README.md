@@ -2,44 +2,46 @@
 
 ## Overview
 
-The **Smart Traffic Signal System** is a Java-based simulation project that dynamically adjusts traffic signal timings based on traffic density. Unlike traditional fixed-timer systems, this project optimizes signal duration using object-oriented programming principles.
+The **Smart Traffic Signal System** is a Java-based simulation that dynamically adjusts traffic signal timings based on real-time traffic density. Unlike traditional fixed-timer systems, this project uses Object-Oriented Programming (OOP) principles and strategy-based logic to optimize traffic flow.
 
 ---
 
 ## Problem Statement
 
-Conventional traffic signals operate on fixed time intervals, which leads to:
+Traditional traffic signals operate on fixed time intervals, which leads to:
 
+* Unnecessary waiting on empty roads
 * Traffic congestion on busy roads
-* Unnecessary waiting time on empty roads
+* Inefficient fuel usage and time loss
 
 This project solves the problem by:
 
-* Analyzing vehicle density
-* Allocating green signal time dynamically
-* Simulating real-world traffic scenarios
+* Calculating traffic density dynamically
+* Allocating green signal time based on demand
+* Supporting different traffic strategies
 
 ---
 
 ## Features
 
 * Dynamic traffic signal timing
-* Multiple road handling (junction simulation)
-* Traffic density-based decision making
-* Scalable and modular design
-* Implementation of core OOP concepts
+* Density-based decision making
+* Strategy-based control (Normal / Heavy Traffic)
+* Clean OOP design
+* User input-based simulation
+* Scalable for multiple roads
 
 ---
 
 ## OOP Concepts Used
 
-| Concept       | Implementation                                            |
-| ------------- | --------------------------------------------------------- |
-| Encapsulation | Private variables in classes like `TrafficSignal`, `Road` |
-| Inheritance   | `Vehicle → Car, Bike, Truck`                              |
-| Polymorphism  | `ControlStrategy` interface                               |
-| Abstraction   | Strategy-based signal control                             |
-| Interface     | `ControlStrategy`                                         |
+| Concept       | Implementation                               |
+| ------------- | -------------------------------------------- |
+| Encapsulation | Private variables in `TrafficSignal`, `Road` |
+| Inheritance   | `Vehicle → Car, Bike, Truck`                 |
+| Polymorphism  | `ControlStrategy` interface                  |
+| Abstraction   | Abstract class `Vehicle`                     |
+| Interface     | `ControlStrategy`                            |
 
 ---
 
@@ -57,6 +59,7 @@ Traffic-System/
 ├── TrafficSignal.java
 ├── ControlStrategy.java
 ├── NormalStrategy.java
+├── HeavyTrafficStrategy.java
 ├── SignalController.java
 ```
 
@@ -67,13 +70,14 @@ Traffic-System/
 1. User inputs:
 
    * Number of roads
-   * Number of vehicles per road
+   * Road names
+   * Number and type of vehicles
 
 2. System:
 
-   * Calculates traffic density
-   * Applies control strategy
-   * Assigns green signal time
+   * Calculates weighted traffic density
+   * Applies selected strategy
+   * Determines optimal green signal time
 
 3. Output:
 
@@ -104,13 +108,13 @@ git clone https://github.com/your-username/traffic-system.git
 cd traffic-system
 ```
 
-3. Compile:
+3. Compile all files:
 
 ```
 javac *.java
 ```
 
-4. Run:
+4. Run the program:
 
 ```
 java Main
@@ -122,10 +126,17 @@ java Main
 
 ```
 Enter number of roads: 2
+
 Enter road name: A
-Enter number of vehicles: 5
+Enter number of vehicles on road A: 2
+Enter vehicle type: car
+Enter vehicle type: truck
+
 Enter road name: B
-Enter number of vehicles: 3
+Enter number of vehicles on road B: 1
+Enter vehicle type: bike
+
+Choose strategy (1: Normal, 2: Heavy Traffic): 1
 ```
 
 ---
@@ -133,8 +144,8 @@ Enter number of vehicles: 3
 ## Sample Output
 
 ```
-Road A GREEN for 20 seconds
-Road B GREEN for 16 seconds
+Road A Density: 3.2 → GREEN for 16 seconds
+Road B Density: 1.2 → GREEN for 12 seconds
 ```
 
 ---
@@ -142,19 +153,19 @@ Road B GREEN for 16 seconds
 ## Future Enhancements
 
 * Emergency vehicle priority system
-* Real-time simulation with delays
-* Traffic analytics dashboard
-* GUI using JavaFX
+* Real-time simulation using threads
+* Graphical User Interface (JavaFX)
 * AI-based traffic prediction
+* Traffic analytics dashboard
 
 ---
 
 ## Learning Outcomes
 
-* Applied real-world problem solving
-* Strong understanding of OOP concepts
-* Hands-on experience with Java project structure
-* GitHub version control practice
+* Practical implementation of OOP concepts
+* Understanding of real-world system design
+* Experience with Java project structuring
+* Hands-on GitHub version control
 
 ---
 
@@ -170,3 +181,5 @@ B.Tech AIML, VIT Bhopal
 This project is for academic purposes.
 
 ---
+
+⭐ If you found this project useful, consider giving it a star!
