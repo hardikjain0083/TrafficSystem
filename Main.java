@@ -1,15 +1,30 @@
 // Main.java
+import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
-        Road roadA = new Road("A");
-        roadA.addVehicle(new Vehicle("Car", 1));
-        roadA.addVehicle(new Vehicle("Truck", 2));
+        Scanner sc = new Scanner(System.in);
 
-        System.out.println("Vehicles on Road A: " + roadA.getVehicleCount());
-        roadA.addVehicle(new Car());
-        roadA.addVehicle(new Truck());
-        System.out.println("Density: " + roadA.calculateDensity());
+        System.out.print("Enter number of roads: ");
+        int n = sc.nextInt();
+
+        Road[] roads = new Road[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter road name: ");
+            String name = sc.next();
+
+            roads[i] = new Road(name);
+
+            System.out.print("Enter number of vehicles: ");
+            int v = sc.nextInt();
+
+            for (int j = 0; j < v; j++) {
+                roads[i].addVehicle(new Car());
+            }
+        }
+
+        SignalController controller = new SignalController(new NormalStrategy());
+        controller.manageTraffic(roads);
     }
-    
-
 }
